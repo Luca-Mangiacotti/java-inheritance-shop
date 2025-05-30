@@ -12,6 +12,17 @@ public class Prodotto {
     protected BigDecimal Price;
     protected BigDecimal iva;
 
+    // metodo costruttore default
+    public Prodotto() {
+
+        this.CodeProd = 0;
+        this.Name = "";
+        this.Brand = "";
+        this.Price = new BigDecimal(0);
+        this.iva = new BigDecimal(0);
+    }
+
+    // metodo costruttore
     public Prodotto(String Name, String Brand, BigDecimal Price, BigDecimal iva) {
 
         Random rand = new Random();
@@ -21,6 +32,8 @@ public class Prodotto {
         this.Price = Price;
         this.iva = iva;
     }
+
+    // metodi get e set per le variabili del prodotto
 
     public int getCode() {
         return this.CodeProd;
@@ -49,6 +62,8 @@ public class Prodotto {
     public void setPrice(BigDecimal newPrice) {
         this.Price = newPrice;
     }
+
+    // metodo per la restituzione del prezzo con iva
 
     public BigDecimal getPriceWithIva() {
 
