@@ -4,12 +4,12 @@ import java.math.BigDecimal;
 
 public class Smartphone extends Prodotto {
 
-    private int Imei;
+    private String Imei;
     private int Memory;
 
     // metodo costruttore per Smartphone
 
-    public Smartphone(String Name, String Brand, BigDecimal Price, BigDecimal iva, int Imei, int Memory) {
+    public Smartphone(String Name, String Brand, BigDecimal Price, BigDecimal iva, String Imei, int Memory) {
         super(Name, Brand, Price, iva);
         this.Imei = Imei;
         this.Memory = Memory;
@@ -17,11 +17,11 @@ public class Smartphone extends Prodotto {
 
     // Metodi get e set particolari di Smartphone
 
-    public int getImei() {
+    public String getImei() {
         return this.Imei;
     }
 
-    public void setImei(int newImei) {
+    public void setImei(String newImei) {
         this.Imei = newImei;
     }
 

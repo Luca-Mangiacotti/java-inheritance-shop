@@ -1,5 +1,36 @@
 package lessons.java.shop;
 
-public class Cuffie {
+import java.math.BigDecimal;
+
+public class Cuffie extends Prodotto {
+
+    private Boolean isWireless;
+    private String Color;
+
+    // metodo costruttore per Cuffie
+
+    public Cuffie(String Name, String Brand, BigDecimal Price, Boolean isWireless, String Color) {
+        super(Name, Brand, Price);
+        this.isWireless = isWireless;
+        this.Color = Color;
+    }
+
+    // Metodi get e set particolari di Cuffie
+
+    public Boolean getisWireless() {
+        return this.isWireless;
+    }
+
+    public void setisWireless(Boolean newisWireless) {
+        this.isWireless = newisWireless;
+    }
+
+    public String getColor() {
+        return this.Color;
+    }
+
+    public void setColor(String newColor) {
+        this.Color = newColor;
+    }
 
 }

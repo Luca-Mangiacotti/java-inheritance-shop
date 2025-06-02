@@ -22,6 +22,17 @@ public class Prodotto {
         this.iva = new BigDecimal(0);
     }
 
+    // metodo costruttore con l'iva impostata al 22%
+    public Prodotto(String Name, String Brand, BigDecimal Price) {
+
+        Random rand = new Random();
+        this.CodeProd = rand.nextInt(9999);
+        this.Name = Name;
+        this.Brand = Brand;
+        this.Price = Price;
+        this.iva = new BigDecimal(0.22);
+    }
+
     // metodo costruttore
     public Prodotto(String Name, String Brand, BigDecimal Price, BigDecimal iva) {
 
