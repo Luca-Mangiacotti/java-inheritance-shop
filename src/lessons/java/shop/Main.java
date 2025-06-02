@@ -5,6 +5,8 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
         Smartphone S24ultra = new Smartphone("S24-Ultra", "Samsung", new BigDecimal(1200.00), "S24U554478598896I", 512);
 
         Televisore Bravia = new Televisore("BraviaX", "Sony", new BigDecimal(400.00), true, 48);
@@ -16,26 +18,41 @@ public class Main {
         Cuffie OnTrack = new Cuffie("OnTrack", "DYSON", new BigDecimal(500.00), true, "Gold");
 
         // Stampa prodotti
-        // System.out.println("ELENCO DEI PRODOTTI \n");
-        // System.out.println("--------------------");
-        // System.out.println("SMARTPHONE: \n \n");
-        // System.out.println(S24ultra.toString() + "\n");
-        // System.out.println("--------------------");
-        // System.out.println("TELEVISORI: \n \n");
-        // System.out.println(Bravia.toString() + "\n");
-        // System.out.println(FourKLG.toString() + "\n");
-        // System.out.println(Funk.toString() + "\n");
-        // System.out.println("--------------------");
-        // System.out.println("CUFFIE: \n \n");
-        // System.out.println(WJBL.toString() + "\n");
-        // System.out.println(Major.toString() + "\n");
-        // System.out.println(OnTrack.toString() + "\n");
+        System.out.println("ELENCO DEI PRODOTTI \n");
+        System.out.println("--------------------");
+        System.out.println("SMARTPHONE: \n \n");
+        System.out.println(S24ultra.toString() + "\n");
+        System.out.println("--------------------");
+        System.out.println("TELEVISORI: \n \n");
+        System.out.println(Bravia.toString() + "\n");
+        System.out.println(FourKLG.toString() + "\n");
+        System.out.println(Funk.toString() + "\n");
+        System.out.println("--------------------");
+        System.out.println("CUFFIE: \n \n");
+        System.out.println(WJBL.toString() + "\n");
+        System.out.println(Major.toString() + "\n");
+        System.out.println(OnTrack.toString() + "\n");
+
+        // chiediamo all'utente se possiede una carta fedeltà
+        System.out.println("Possiedi una carta fedeltà? (si/no)");
+        String Fcard = scanner.nextLine().trim().toLowerCase();
+        if (Fcard.equals("si")) {
+            System.out.println("inserisci la tua carta fedeltà: ");
+            Fidelity cardToCheck = new Fidelity();
+            String card = scanner.nextLine().trim();
+            // verifichiamo se la carta è valida
+            if (cardToCheck.isValidCard(card)) {
+                System.out.println("hai diritto al 2% di sconto sul prezzo del prodotto.");
+            } else {
+                System.out.println("carta non valida");
+            }
+
+        }
 
         // facciamo inserire all'utente un nuovo prodotto
         System.out.println("Inserisci un nuovo prodotto: ");
         // chiediamo che tipo di prodotto vuole inserire
         System.out.println("Che tipo di prodotto vuoi inserire? Smartphone, Televisore o Cuffie?");
-        Scanner scanner = new Scanner(System.in);
         String typeOfProduct = scanner.nextLine().trim().toLowerCase();
         // creiamo il tipo di prodotto richiesto
         if (typeOfProduct.equals("smartphone")) {
