@@ -81,6 +81,13 @@ public class Prodotto {
         return this.Price.multiply(this.iva.add(BigDecimal.ONE)).setScale(2, RoundingMode.DOWN);
     }
 
+    // metodo per la restituzione del prezzo con sconto del 2% se la carta fedeltà è
+    // valida
+    public BigDecimal getPriceFidelity(BigDecimal discount) {
+        BigDecimal discountAmount = this.Price.multiply(discount);
+        return this.Price.subtract(discountAmount).setScale(2, RoundingMode.DOWN);
+    }
+
     // metodo polimorfo per la restituzione della scheda Prodotto
     @Override
     public String toString() {

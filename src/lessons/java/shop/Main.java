@@ -7,41 +7,19 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        Smartphone S24ultra = new Smartphone("S24-Ultra", "Samsung", new BigDecimal(1200.00), "S24U554478598896I", 512);
-
-        Televisore Bravia = new Televisore("BraviaX", "Sony", new BigDecimal(400.00), true, 48);
-        Televisore FourKLG = new Televisore("Techno4k", "LG", new BigDecimal(380.00), true, 50);
-        Televisore Funk = new Televisore("Funk-10", "Telefunken", new BigDecimal(120), false, 22);
-
-        Cuffie WJBL = new Cuffie("WirePower", "JBL", new BigDecimal(550.00), true, "Black");
-        Cuffie Major = new Cuffie("Major-V", "Marshall", new BigDecimal(150.00), false, "White");
-        Cuffie OnTrack = new Cuffie("OnTrack", "DYSON", new BigDecimal(500.00), true, "Gold");
-
-        // Stampa prodotti
-        System.out.println("ELENCO DEI PRODOTTI \n");
-        System.out.println("--------------------");
-        System.out.println("SMARTPHONE: \n \n");
-        System.out.println(S24ultra.toString() + "\n");
-        System.out.println("--------------------");
-        System.out.println("TELEVISORI: \n \n");
-        System.out.println(Bravia.toString() + "\n");
-        System.out.println(FourKLG.toString() + "\n");
-        System.out.println(Funk.toString() + "\n");
-        System.out.println("--------------------");
-        System.out.println("CUFFIE: \n \n");
-        System.out.println(WJBL.toString() + "\n");
-        System.out.println(Major.toString() + "\n");
-        System.out.println(OnTrack.toString() + "\n");
-
         // chiediamo all'utente se possiede una carta fedeltà
         System.out.println("Possiedi una carta fedeltà? (si/no)");
         String Fcard = scanner.nextLine().trim().toLowerCase();
+        // creiamo una variabile booleana che ci dirà in seguito se l'utente ha diritto
+        // allo sconto
+        boolean hasValidCard = false;
         if (Fcard.equals("si")) {
             System.out.println("inserisci la tua carta fedeltà: ");
             Fidelity cardToCheck = new Fidelity();
             String card = scanner.nextLine().trim();
             // verifichiamo se la carta è valida
             if (cardToCheck.isValidCard(card)) {
+                hasValidCard = true;
                 System.out.println("hai diritto al 2% di sconto sul prezzo del prodotto.");
             } else {
                 System.out.println("carta non valida");
@@ -62,12 +40,17 @@ public class Main {
             String brand = scanner.nextLine().trim();
             System.out.println("inserisci il prezzo dello smartphone;");
             BigDecimal price = scanner.nextBigDecimal();
+            scanner.nextLine(); // consuma il newline rimasto dopo il nextBigDecimal
             System.out.println("inserisci il codice IMEI dello smartphone:");
-            String imei = scanner.nextLine();
+            String imei = scanner.nextLine().trim();
             System.out.println("Inserisci la memoria dello smartphone in GB: ");
             int memory = scanner.nextInt();
             // creiamo l'oggetto smarthone
             Smartphone newSmartphone = new Smartphone(name, brand, price, imei, memory);
+            // verifichiamo se l'utente ha diritto allo sconto
+            if (hasValidCard) {
+                newSmartphone.setPrice(newSmartphone.getPriceFidelity(new BigDecimal(0.02)));
+            }
             // stampiamo la scheda dello smartphone appena creato
             System.out.println("Scheda del nuovo smartphone: \n");
             System.out.println(newSmartphone.toString());
