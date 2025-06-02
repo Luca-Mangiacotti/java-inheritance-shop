@@ -81,4 +81,14 @@ public class Prodotto {
         return this.Price.multiply(this.iva.add(BigDecimal.ONE)).setScale(2, RoundingMode.DOWN);
     }
 
+    // metodo polimorfo per la restituzione della scheda Prodotto
+    @Override
+    public String toString() {
+        if (this.Name != null) {
+            return this.CodeProd + "-" + this.Name;
+        } else {
+            return "Errore";
+        }
+    }
+
 }
