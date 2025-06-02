@@ -85,7 +85,7 @@ public class Prodotto {
     @Override
     public String toString() {
         if (this.Name != null) {
-            return this.CodeProd + "-" + this.Name;
+            return (this.CodeProd + "-" + this.Name).toUpperCase();
         } else {
             return "Errore";
         }

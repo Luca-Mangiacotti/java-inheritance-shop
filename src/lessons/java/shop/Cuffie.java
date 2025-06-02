@@ -33,4 +33,18 @@ public class Cuffie extends Prodotto {
         this.Color = newColor;
     }
 
+    // metodo per la restituzione della Scheda per Cuffie
+    @Override
+    public String toString() {
+        if (this.Name != null) {
+            final BigDecimal Sell = getPriceWithIva();
+            final String Wire = this.isWireless ? ", con tecnologia Wireless." : "";
+            return super.toString() + "\n" + this.Name + " " + this.Brand + "\n"
+                    + "Colore " + this.Color + Wire + "\n" + "Prezzo: " + Sell
+                    + " euro (iva al 22 % inclusa) ";
+        } else {
+            return "Errore";
+        }
+    }
+
 }

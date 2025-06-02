@@ -33,4 +33,18 @@ public class Televisore extends Prodotto {
         this.Inches = newInches;
     }
 
+    // metodo per la restituzione della Scheda di un Televisore
+    @Override
+    public String toString() {
+        if (this.Name != null) {
+            final BigDecimal Sell = getPriceWithIva();
+            final String SmartTV = this.isSmart ? ", con tecnologia SMART." : "";
+            return super.toString() + "\n" + this.Name + " " + this.Brand + "\n"
+                    + "Pollici " + this.Inches + "''" + SmartTV + "\n" + "Prezzo: " + Sell
+                    + " euro (iva al 22 % inclusa) ";
+        } else {
+            return "Errore";
+        }
+    }
+
 }
